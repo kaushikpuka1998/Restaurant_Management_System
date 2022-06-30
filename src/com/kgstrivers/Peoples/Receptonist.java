@@ -81,4 +81,12 @@ public class Receptonist extends Employee{
        }
 
     }
+
+//    public HashMap<String,Waiter> AllWaiters()
+//    {
+//
+//        return Waiter.allWaiter();
+//
+//
+//    }
 }

@@ -11,5 +11,7 @@ public abstract class Person {
         this.phone = phone;
     }
 
+    public abstract  void register();
+
 
 }
