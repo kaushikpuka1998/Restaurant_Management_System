@@ -31,6 +31,7 @@ public class Receptonist extends Employee{
             Customer cust = customerList.get(customer);
             cust.setReservationStatus(ReservationStatus.CHECKEDIN);
             cust.setDate(new Date());
+            System.out.println(customer+" Checked In Successfully");
         }
         else
         {
@@ -45,6 +46,7 @@ public class Receptonist extends Employee{
             Customer cust = customerList.get(customer);
             cust.setReservationStatus(ReservationStatus.CANCELLED);
             cust.setDate(new Date());
+            System.out.println(customer+" Cancelled In Successfully");
         }
         else
         {
@@ -59,6 +61,7 @@ public class Receptonist extends Employee{
             Customer cust = customerList.get(customer);
             cust.setReservationStatus(ReservationStatus.CHECKOUT);
             cust.setDate(new Date());
+            System.out.println(customer+" CheckedOut Successfully");
         }
         else
         {

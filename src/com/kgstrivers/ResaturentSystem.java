@@ -12,7 +12,7 @@ import java.util.Scanner;
 public class ResaturentSystem {
     public static void main( String[] args)
     {
-        System.out.println("Hello");
+        System.out.println("Please Login");
 
         Receptonist a = new Receptonist("Kaushik","kgstrivers@gmail.com","8159924565");
         a.setEmpID("45");
@@ -26,10 +26,10 @@ public class ResaturentSystem {
 
 
         System.out.println("1.Searching the Reservation by Customer Please Enter=>>>> 1");
-        System.out.println("2.Creating Reservation Please Enter=>>>>>> 2 ");
-        System.out.println("1.Update the Reservation Please Enter=>>>> 3");
-        System.out.println("3.Abort Please Enter=>>>>>> 3 ");
-        System.out.println("Enter Digit:");
+        System.out.println("2.Creating Reservation Please Enter=>>>>>> 2");
+        System.out.println("3.Update the Reservation Please Enter=>>>> 3");
+        System.out.println("4.Abort Please Enter=>>>>>> 0");
+        System.out.println("Enter Process number:");
         Scanner sc = new Scanner(System.in);
         Integer value = Integer.valueOf(sc.nextLine());
         while(!value.equals(0)) {
@@ -40,22 +40,25 @@ public class ResaturentSystem {
                 System.out.println("Customer Name:(Please Click & Enter)");
                 String customername = scv.nextLine();
                 Customer customerpresent = a.searchCustomer(customername);
-                if(customerpresent!= null)
+                if(customerpresent.getReservationStatus().equals(ReservationStatus.CANCELLED)){
+                    System.out.println(customername+"'s Booking is Cancelled in The system On "+customerpresent.getDate());
+                }
+                else if(!customerpresent.getReservationStatus().equals(ReservationStatus.CHECKOUT) )
                 {
                     System.out.println("Customer name "+customername+" Present in The system & current Status is ===> "+customerpresent.getReservationStatus());
                 }
                 else
                 {
-                    System.out.println(customername+"'s Booking Not Present in The system");
+                    System.out.println(customername+"'s Booking is Not Active in The system");
                 }
-                System.out.println("Enter Digit:");
+                System.out.println("Enter Process number:");
                 value = Integer.valueOf(sc.nextLine());
             } else if (value.equals(2)) {
                 Scanner scv = new Scanner(System.in);
                 System.out.println("Customer Name:");
                 String customername = scv.nextLine();
                 a.createReservation(customername, new Customer(customername, ReservationStatus.BOOKED,new Date()));
-                System.out.println("Enter Digit:");
+                System.out.println("Enter Process number:");
                 value = Integer.valueOf(sc.nextLine());
             }
             else if (value.equals(3)) {
@@ -72,7 +75,7 @@ public class ResaturentSystem {
                     System.out.println("Customer Name:");
                     String customername = scv.nextLine();
                     a.Checkedineservation(customername);
-                    System.out.println("Enter Digit:");
+                    System.out.println("Enter Process number:");
                     value = Integer.valueOf(sc.nextLine());
                 }
                 else  if(inputis.equals(2))
@@ -81,14 +84,14 @@ public class ResaturentSystem {
                     System.out.println("Customer Name:");
                     String customername = scv.nextLine();
                     a.CheckoutReservation(customername);
-                    System.out.println("Enter Digit:");
+                    System.out.println("Enter Process number:");
                     value = Integer.valueOf(sc.nextLine());
                 } else{
                     Scanner scv = new Scanner(System.in);
                     System.out.println("Customer Name:");
                     String customername = scv.nextLine();
                     a.CancelledReservation(customername);
-                    System.out.println("Enter Digit:");
+                    System.out.println("Enter Process number:");
                     value = Integer.valueOf(sc.nextLine());
                 }
 
